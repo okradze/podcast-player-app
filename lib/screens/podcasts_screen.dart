@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:podcast_player_app/providers/podcasts_provider.dart';
 import 'package:podcast_player_app/widgets/podcast_preview_item.dart';
+import 'package:podcast_player_app/widgets/spinner.dart';
 import 'package:provider/provider.dart';
 
 class PodcastsScreen extends StatefulWidget {
@@ -28,19 +29,6 @@ class _PodcastsScreenState extends State<PodcastsScreen> {
     });
   }
 
-  Widget buildSpinner() {
-    return Center(
-      child: SizedBox(
-        height: 24,
-        width: 24,
-        child: CircularProgressIndicator(
-          color: Theme.of(context).primaryColor,
-          strokeWidth: 3.0,
-        ),
-      ),
-    );
-  }
-
   @override
   Widget build(BuildContext context) {
     final podcasts = Provider.of<PodcastsProvider>(context);
@@ -51,7 +39,7 @@ class _PodcastsScreenState extends State<PodcastsScreen> {
       child: Padding(
         padding: const EdgeInsets.all(20.0),
         child: podcasts.isLoading && podcasts.page == 1
-            ? buildSpinner()
+            ? Spinner()
             : Column(
                 children: [
                   ListView.builder(
@@ -67,7 +55,7 @@ class _PodcastsScreenState extends State<PodcastsScreen> {
                   Container(
                     height: 60,
                     width: double.infinity,
-                    child: podcasts.isLoading ? buildSpinner() : null,
+                    child: podcasts.isLoading ? Spinner() : null,
                   ),
                 ],
               ),
