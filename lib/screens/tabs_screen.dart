@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:podcast_player_app/colors.dart';
 import 'package:podcast_player_app/my_app_icons.dart';
+import 'package:podcast_player_app/screens/discover_screen.dart';
+import 'package:podcast_player_app/screens/podcast_detail_screen.dart';
+import 'package:podcast_player_app/screens/podcasts_screen.dart';
 
 class TabsScreen extends StatefulWidget {
   const TabsScreen({Key? key}) : super(key: key);
@@ -11,9 +14,9 @@ class TabsScreen extends StatefulWidget {
 
 class _TabsScreenState extends State<TabsScreen> {
   final List<Widget> tabs = [
-    Text('Podcasts'),
-    Text('Discover'),
-    Text('Playing')
+    PodcastsScreen(),
+    DiscoverScreen(),
+    PodcastDetailScreen(),
   ];
   int selectedTabIndex = 0;
 
@@ -26,9 +29,17 @@ class _TabsScreenState extends State<TabsScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Podcast'),
-      ),
+      // appBar: AppBar(
+      //   title: Text(
+      //     'Podcast',
+      //     style: TextStyle(
+      //       color: kSecondaryColor,
+      //       fontWeight: FontWeight.w600,
+      //     ),
+      //   ),
+      //   backgroundColor: kOffsetColor,
+      //   elevation: 0.0,
+      // ),
       body: IndexedStack(
         index: selectedTabIndex,
         children: tabs,
