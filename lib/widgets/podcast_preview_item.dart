@@ -25,6 +25,7 @@ class PodcastPreviewItem extends StatelessWidget {
               podcast.thumbnail,
               fit: BoxFit.cover,
               width: 60,
+              height: 60,
             ),
           ),
           Expanded(
