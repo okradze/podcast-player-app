@@ -39,7 +39,7 @@ class _TabsScreenState extends State<TabsScreen> {
         showSelectedLabels: false,
         showUnselectedLabels: false,
         iconSize: 22,
-        selectedItemColor: kSecondaryColor,
+        selectedItemColor: Theme.of(context).primaryColor,
         unselectedItemColor: kTextColor,
         backgroundColor: kOffsetColor,
         elevation: 0.0,

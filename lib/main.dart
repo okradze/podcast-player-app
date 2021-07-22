@@ -14,6 +14,8 @@ class MyApp extends StatelessWidget {
       title: 'Podcast Player',
       theme: ThemeData(
         fontFamily: 'OpenSans',
+        primaryColor: kPrimaryColor,
+        accentColor: kSecondaryColor,
         scaffoldBackgroundColor: kOffsetColor,
       ),
       home: TabsScreen(),
