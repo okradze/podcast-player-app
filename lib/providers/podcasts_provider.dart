@@ -1,12 +1,8 @@
 import 'dart:convert';
 
 import 'package:flutter/widgets.dart';
-import 'package:flutter_dotenv/flutter_dotenv.dart';
-import 'package:http/http.dart' as http;
+import 'package:podcast_player_app/apiClient.dart';
 import 'package:podcast_player_app/models/podcast_model.dart';
-
-final String apiKey = dotenv.env['LISTEN_NOTES_API_KEY']!;
-const BASE_URL = 'https://listen-api.listennotes.com/api/v2';
 
 class PodcastsProvider with ChangeNotifier {
   List<PodcastPreviewModel> _items = [];
@@ -27,14 +23,13 @@ class PodcastsProvider with ChangeNotifier {
   Future<void> fetchPodcasts() async {
     try {
       if (!_hasNextPage) return;
+
       setLoading(true);
 
-      final res = await http.get(
-        Uri.parse(BASE_URL + '/best_podcasts?page=$_page'),
-        headers: {
-          'X-ListenAPI-Key': apiKey,
-        },
-      );
+      final res =
+          await listenNotesApi.get(Uri.parse('/best_podcasts?page=$_page'));
+      setLoading(false);
+
       final data = jsonDecode(res.body) as Map<String, dynamic>;
       final List<dynamic> podcasts = data['podcasts'];
 
@@ -44,8 +39,7 @@ class PodcastsProvider with ChangeNotifier {
 
       _hasNextPage = data['has_next'];
       _page = _page + 1;
-
-      setLoading(false);
+      notifyListeners();
     } catch (e) {
       setLoading(false);
       throw e;
