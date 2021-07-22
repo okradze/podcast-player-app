@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:podcast_player_app/colors.dart';
+import 'package:podcast_player_app/my_app_icons.dart';
 
 class TabsScreen extends StatefulWidget {
   const TabsScreen({Key? key}) : super(key: key);
@@ -13,7 +15,6 @@ class _TabsScreenState extends State<TabsScreen> {
     Text('Discover'),
     Text('Playing')
   ];
-  final List tabsLabels = ['Podcasts', 'Discover', 'Playing'];
   int selectedTabIndex = 0;
 
   void selectTab(int index) {
@@ -26,7 +27,7 @@ class _TabsScreenState extends State<TabsScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(tabsLabels[selectedTabIndex]),
+        title: Text('Podcast'),
       ),
       body: IndexedStack(
         index: selectedTabIndex,
@@ -34,22 +35,26 @@ class _TabsScreenState extends State<TabsScreen> {
       ),
       bottomNavigationBar: BottomNavigationBar(
         onTap: selectTab,
-        backgroundColor: Theme.of(context).primaryColor,
-        unselectedItemColor: Colors.white,
-        selectedItemColor: Theme.of(context).accentColor,
         currentIndex: selectedTabIndex,
-        items: const [
+        showSelectedLabels: false,
+        showUnselectedLabels: false,
+        iconSize: 22,
+        selectedItemColor: kSecondaryColor,
+        unselectedItemColor: kTextColor,
+        backgroundColor: kOffsetColor,
+        elevation: 0.0,
+        items: [
           BottomNavigationBarItem(
-            icon: Icon(Icons.home),
-            label: 'Podcasts',
+            icon: Icon(MyAppIcons.home),
+            label: 'Home',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.search),
+            icon: Icon(MyAppIcons.search),
             label: 'Discover',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.podcasts),
-            label: 'Playing',
+            icon: Icon(MyAppIcons.podcast),
+            label: 'Podcast',
           ),
         ],
       ),
