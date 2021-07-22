@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:podcast_player_app/providers/podcasts_provider.dart';
-import 'package:podcast_player_app/widgets/podcast_preview_item.dart';
+import 'package:podcast_player_app/widgets/podcast_list.dart';
 import 'package:podcast_player_app/widgets/spinner.dart';
 import 'package:provider/provider.dart';
 
@@ -15,14 +15,14 @@ class _PodcastsScreenState extends State<PodcastsScreen> {
   @override
   void initState() {
     super.initState();
-    Future.delayed(Duration.zero, () {
+    Future.delayed(Duration.zero, () async {
       final podcasts = Provider.of<PodcastsProvider>(context, listen: false);
-      podcasts.fetchPodcasts();
+      await podcasts.fetchPodcasts();
 
-      scrollController.addListener(() {
+      scrollController.addListener(() async {
         if (scrollController.position.atEdge) {
           if (scrollController.position.pixels != 0) {
-            podcasts.fetchPodcasts();
+            await podcasts.fetchPodcasts();
           }
         }
       });
@@ -31,34 +31,23 @@ class _PodcastsScreenState extends State<PodcastsScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final podcasts = Provider.of<PodcastsProvider>(context);
-
     return SingleChildScrollView(
       physics: ScrollPhysics(),
       controller: scrollController,
       child: Padding(
         padding: const EdgeInsets.all(20.0),
-        child: podcasts.isLoading && podcasts.page == 1
-            ? Spinner()
-            : Column(
-                children: [
-                  ListView.builder(
-                    physics: NeverScrollableScrollPhysics(),
-                    shrinkWrap: true,
-                    itemBuilder: (ctx, index) {
-                      final podcast = podcasts.items[index];
-                      return PodcastPreviewItem(
-                          key: Key(podcast.id), podcast: podcast);
-                    },
-                    itemCount: podcasts.items.length,
-                  ),
-                  Container(
-                    height: 60,
-                    width: double.infinity,
-                    child: podcasts.isLoading ? Spinner() : null,
-                  ),
-                ],
+        child: Column(
+          children: [
+            PodcastList(),
+            Consumer<PodcastsProvider>(
+              builder: (ctx, podcasts, _) => Container(
+                height: 60,
+                width: double.infinity,
+                child: podcasts.isLoading ? Spinner() : null,
               ),
+            ),
+          ],
+        ),
       ),
     );
   }
