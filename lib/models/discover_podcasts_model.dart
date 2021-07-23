@@ -11,12 +11,12 @@ class DiscoverPodcastsModel {
   });
 
   factory DiscoverPodcastsModel.fromJson(Map<String, dynamic> json) {
+    final podcasts = List<Map<String, dynamic>>.from(json['podcasts']);
+
     return DiscoverPodcastsModel(
       id: json['id'],
       title: json['title'],
-      podcasts: (json['podcasts'] as List<Map<String, dynamic>>)
-          .map((e) => PodcastPreviewModel.fromJson(e))
-          .toList(),
+      podcasts: podcasts.map((e) => PodcastPreviewModel.fromJson(e)).toList(),
     );
   }
 }
