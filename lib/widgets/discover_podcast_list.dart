@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:podcast_player_app/screens/podcast_detail_screen.dart';
 import 'package:podcast_player_app/themes/colors.dart';
 import 'package:podcast_player_app/providers/discover_podcasts_provider.dart';
 import 'package:provider/provider.dart';
@@ -41,11 +42,21 @@ class DiscoverPodcastList extends StatelessWidget {
                   itemCount: item.podcasts.length,
                   itemBuilder: (ctx, index) {
                     final podcast = item.podcasts[index];
-                    return Container(
-                      margin: const EdgeInsets.symmetric(horizontal: 10),
-                      child: ClipRRect(
-                        borderRadius: BorderRadius.circular(20.0),
-                        child: Image.network(podcast.thumbnail),
+                    return InkWell(
+                      onTap: () {
+                        Navigator.of(context).pushNamed(
+                            PodcastDetailScreen.routeName,
+                            arguments: podcast);
+                      },
+                      child: Container(
+                        margin: const EdgeInsets.symmetric(horizontal: 10),
+                        child: ClipRRect(
+                          borderRadius: BorderRadius.circular(20.0),
+                          child: Image.network(
+                            podcast.thumbnail,
+                            fit: BoxFit.cover,
+                          ),
+                        ),
                       ),
                     );
                   },

@@ -1,6 +1,7 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
+import 'package:podcast_player_app/screens/podcast_detail_screen.dart';
 import 'package:podcast_player_app/themes/colors.dart';
 import 'package:podcast_player_app/providers/discover_podcasts_provider.dart';
 import 'package:podcast_player_app/providers/podcasts_provider.dart';
@@ -36,7 +37,10 @@ class MyApp extends StatelessWidget {
         accentColor: kSecondaryColor,
         scaffoldBackgroundColor: kLightBackgroundColor,
       ),
-      home: TabsScreen(),
+      routes: {
+        '/': (ctx) => TabsScreen(),
+        PodcastDetailScreen.routeName: (ctx) => PodcastDetailScreen(),
+      },
     );
   }
 }
