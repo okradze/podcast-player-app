@@ -7,71 +7,61 @@ class DiscoverPodcastList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final discoverPodcasts = Provider.of<DiscoverPodcastsProvider>(context);
-    final size = MediaQuery.of(context).size;
 
-    return Column(
-      children: [
-        ...discoverPodcasts.items.map((item) {
-          return Column(
+    return ListView.builder(
+      physics: NeverScrollableScrollPhysics(),
+      shrinkWrap: true,
+      itemBuilder: (ctx, index) {
+        final item = discoverPodcasts.items[index];
+
+        return Container(
+          margin: const EdgeInsets.only(bottom: 50),
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(15),
+          ),
+          child: Column(
             children: [
-              Text(
-                item.title,
-                style: TextStyle(
-                  fontSize: 16,
-                  color: kTextColor,
-                  fontWeight: FontWeight.w600,
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 20.0),
+                child: Text(
+                  item.title,
+                  style: TextStyle(
+                    fontSize: 17,
+                    color: kTextColor,
+                    fontWeight: FontWeight.w600,
+                  ),
                 ),
               ),
               SizedBox(height: 20),
-              Container(
-                width: size.width,
-                height: 120,
-                child: ListView.separated(
-                  shrinkWrap: true,
-                  scrollDirection: Axis.horizontal,
-                  itemCount: item.podcasts.length,
-                  separatorBuilder: (ctx, int index) {
-                    return SizedBox(width: 20);
-                  },
-                  itemBuilder: (ctx, index) {
-                    final podcast = item.podcasts[index];
-                    return Container(
-                      child: ClipRRect(
-                        borderRadius: BorderRadius.circular(20.0),
-                        child: Image.network(podcast.thumbnail),
-                      ),
-                    );
-                  },
-                  // children: [
-                  //   ...item.podcasts.map(
-                  //     (podcast) => Container(
-                  //       child: ClipRRect(
-                  //         borderRadius: BorderRadius.circular(20.0),
-                  //         child: Image.network(podcast.thumbnail),
-                  //       ),
-                  //     ),
-                  //   ),
-                  // ],
+              Padding(
+                padding: const EdgeInsets.only(left: 0.0),
+                child: Container(
+                  height: 130,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(20.0),
+                  ),
+                  child: ListView.builder(
+                    shrinkWrap: true,
+                    scrollDirection: Axis.horizontal,
+                    itemCount: item.podcasts.length,
+                    itemBuilder: (ctx, index) {
+                      final podcast = item.podcasts[index];
+                      return Container(
+                        margin: const EdgeInsets.symmetric(horizontal: 10),
+                        child: ClipRRect(
+                          borderRadius: BorderRadius.circular(20.0),
+                          child: Image.network(podcast.thumbnail),
+                        ),
+                      );
+                    },
+                  ),
                 ),
               ),
-              SizedBox(height: 40),
             ],
-          );
-        }),
-      ],
+          ),
+        );
+      },
+      itemCount: discoverPodcasts.items.length,
     );
-
-    // return ListView.separated(
-    //   physics: NeverScrollableScrollPhysics(),
-    //   shrinkWrap: true,
-    //   separatorBuilder: (ctx, index) {
-    //     return const Divider();
-    //   },
-    //   itemBuilder: (ctx, index) {
-    //     final podcast = discoverPodcasts.items[index];
-    //     return PodcastPreviewItem(key: Key(podcast.id), podcast: podcast);
-    //   },
-    //   itemCount: discoverPodcasts.items.length,
-    // );
   }
 }

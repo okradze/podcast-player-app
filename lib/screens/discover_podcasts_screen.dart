@@ -36,20 +36,18 @@ class _DiscoverPodcastsScreenState extends State<DiscoverPodcastsScreen> {
       child: SingleChildScrollView(
         physics: ScrollPhysics(),
         controller: scrollController,
-        child: Padding(
-          padding: const EdgeInsets.all(20.0),
-          child: Column(
-            children: [
-              DiscoverPodcastList(),
-              Consumer<DiscoverPodcastsProvider>(
-                builder: (ctx, podcasts, _) => Container(
-                  height: 60,
-                  width: double.infinity,
-                  child: podcasts.isLoading ? Spinner() : null,
-                ),
+        child: Column(
+          children: [
+            SizedBox(height: 20),
+            DiscoverPodcastList(),
+            Consumer<DiscoverPodcastsProvider>(
+              builder: (ctx, podcasts, _) => Container(
+                height: 60,
+                width: double.infinity,
+                child: podcasts.isLoading ? Spinner() : null,
               ),
-            ],
-          ),
+            ),
+          ],
         ),
       ),
     );
