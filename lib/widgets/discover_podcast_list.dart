@@ -24,17 +24,13 @@ class DiscoverPodcastList extends StatelessWidget {
                 width: double.infinity,
                 child: Text(
                   item.title,
-                  style: TextStyle(
-                    fontSize: 17,
-                    color: kTextColor,
-                    fontWeight: FontWeight.w600,
-                  ),
+                  style: Theme.of(context).textTheme.headline5,
                   textAlign: TextAlign.start,
                 ),
               ),
               SizedBox(height: 20),
               Container(
-                height: 130,
+                height: 150,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(20.0),
                 ),

@@ -40,10 +40,9 @@ class PodcastPreviewItem extends StatelessWidget {
                   SizedBox(height: 5),
                   Text(
                     'by ${podcast.publisher}',
-                    style: Theme.of(context)
-                        .textTheme
-                        .subtitle2!
-                        .copyWith(color: kLightText),
+                    style: Theme.of(context).textTheme.subtitle2!.copyWith(
+                          color: kLightText,
+                        ),
                   ),
                 ],
               ),

@@ -3,17 +3,17 @@ import 'package:podcast_player_app/themes/colors.dart';
 
 const DEFAULT_TEXT_THEME = TextTheme(
   headline1:
-      TextStyle(fontSize: 30, fontWeight: FontWeight.bold, color: kTextColor),
+      TextStyle(fontSize: 30, fontWeight: FontWeight.w600, color: kTextColor),
   headline2:
-      TextStyle(fontSize: 26, fontWeight: FontWeight.bold, color: kTextColor),
+      TextStyle(fontSize: 26, fontWeight: FontWeight.w600, color: kTextColor),
   headline3:
-      TextStyle(fontSize: 22, fontWeight: FontWeight.bold, color: kTextColor),
+      TextStyle(fontSize: 22, fontWeight: FontWeight.w600, color: kTextColor),
   headline4:
-      TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: kTextColor),
+      TextStyle(fontSize: 18, fontWeight: FontWeight.w600, color: kTextColor),
   headline5:
-      TextStyle(fontSize: 16, fontWeight: FontWeight.bold, color: kTextColor),
+      TextStyle(fontSize: 16, fontWeight: FontWeight.w600, color: kTextColor),
   headline6:
-      TextStyle(fontSize: 14, fontWeight: FontWeight.bold, color: kTextColor),
+      TextStyle(fontSize: 14, fontWeight: FontWeight.w600, color: kTextColor),
   subtitle1:
       TextStyle(fontSize: 14, fontWeight: FontWeight.w500, color: kTextColor),
   subtitle2:
