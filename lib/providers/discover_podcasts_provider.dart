@@ -31,7 +31,6 @@ class DiscoverPodcastsProvider with ChangeNotifier {
       setLoading(false);
 
       final Map<String, dynamic> data = jsonDecode(res.body);
-      // final List<dynamic> lists = data['curated_lists'];
       final lists = List<Map<String, dynamic>>.from(data['curated_lists']);
 
       lists.forEach((list) {

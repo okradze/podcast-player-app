@@ -23,7 +23,7 @@ class MyApp extends StatelessWidget {
         debugShowCheckedModeBanner: false,
         title: 'Podcast Player',
         theme: ThemeData(
-          fontFamily: 'OpenSans',
+          fontFamily: 'Montserrat',
           primaryColor: kPrimaryColor,
           accentColor: kSecondaryColor,
           scaffoldBackgroundColor: kLightBackgroundColor,

@@ -16,13 +16,12 @@ class DiscoverPodcastList extends StatelessWidget {
 
         return Container(
           margin: const EdgeInsets.only(bottom: 50),
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(15),
-          ),
           child: Column(
+            mainAxisAlignment: MainAxisAlignment.start,
             children: [
-              Padding(
+              Container(
                 padding: const EdgeInsets.symmetric(horizontal: 20.0),
+                width: double.infinity,
                 child: Text(
                   item.title,
                   style: TextStyle(
@@ -30,31 +29,30 @@ class DiscoverPodcastList extends StatelessWidget {
                     color: kTextColor,
                     fontWeight: FontWeight.w600,
                   ),
+                  textAlign: TextAlign.start,
                 ),
               ),
               SizedBox(height: 20),
-              Padding(
-                padding: const EdgeInsets.only(left: 0.0),
-                child: Container(
-                  height: 130,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(20.0),
-                  ),
-                  child: ListView.builder(
-                    shrinkWrap: true,
-                    scrollDirection: Axis.horizontal,
-                    itemCount: item.podcasts.length,
-                    itemBuilder: (ctx, index) {
-                      final podcast = item.podcasts[index];
-                      return Container(
-                        margin: const EdgeInsets.symmetric(horizontal: 10),
-                        child: ClipRRect(
-                          borderRadius: BorderRadius.circular(20.0),
-                          child: Image.network(podcast.thumbnail),
-                        ),
-                      );
-                    },
-                  ),
+              Container(
+                height: 130,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(20.0),
+                ),
+                alignment: Alignment.centerLeft,
+                child: ListView.builder(
+                  shrinkWrap: true,
+                  scrollDirection: Axis.horizontal,
+                  itemCount: item.podcasts.length,
+                  itemBuilder: (ctx, index) {
+                    final podcast = item.podcasts[index];
+                    return Container(
+                      margin: const EdgeInsets.symmetric(horizontal: 10),
+                      child: ClipRRect(
+                        borderRadius: BorderRadius.circular(20.0),
+                        child: Image.network(podcast.thumbnail),
+                      ),
+                    );
+                  },
                 ),
               ),
             ],
