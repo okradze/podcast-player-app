@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:podcast_player_app/colors.dart';
-import 'package:podcast_player_app/models/podcast_model.dart';
+import 'package:podcast_player_app/models/podcast_preview_model.dart';
 import 'package:podcast_player_app/my_app_icons.dart';
 
 class PodcastPreviewItem extends StatelessWidget {

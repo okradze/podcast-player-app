@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:podcast_player_app/colors.dart';
+import 'package:podcast_player_app/providers/discover_podcasts_provider.dart';
 import 'package:podcast_player_app/providers/podcasts_provider.dart';
 import 'package:podcast_player_app/screens/tabs_screen.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
@@ -16,6 +17,7 @@ class MyApp extends StatelessWidget {
     return MultiProvider(
       providers: [
         ChangeNotifierProvider(create: (ctx) => PodcastsProvider()),
+        ChangeNotifierProvider(create: (ctx) => DiscoverPodcastsProvider()),
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
