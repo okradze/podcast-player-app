@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:podcast_player_app/colors.dart';
+import 'package:podcast_player_app/themes/colors.dart';
 import 'package:podcast_player_app/models/podcast_preview_model.dart';
 import 'package:podcast_player_app/my_app_icons.dart';
 
@@ -14,7 +14,6 @@ class PodcastPreviewItem extends StatelessWidget {
       margin: const EdgeInsets.only(bottom: 20.0),
       decoration: BoxDecoration(
         color: kOffsetColor,
-        border: null,
         borderRadius: BorderRadius.circular(15.0),
       ),
       child: Row(
@@ -24,8 +23,8 @@ class PodcastPreviewItem extends StatelessWidget {
             child: Image.network(
               podcast.thumbnail,
               fit: BoxFit.cover,
-              width: 60,
-              height: 60,
+              width: 70,
+              height: 70,
             ),
           ),
           Expanded(
@@ -33,21 +32,18 @@ class PodcastPreviewItem extends StatelessWidget {
               margin: const EdgeInsets.symmetric(horizontal: 10.0),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text(
                     podcast.title,
-                    style: TextStyle(
-                      color: kTextColor,
-                      fontSize: 14,
-                    ),
+                    style: Theme.of(context).textTheme.subtitle1,
                   ),
+                  SizedBox(height: 5),
                   Text(
                     'by ${podcast.publisher}',
-                    style: TextStyle(
-                      color: kLightText,
-                      fontSize: 13,
-                    ),
+                    style: Theme.of(context)
+                        .textTheme
+                        .subtitle2!
+                        .copyWith(color: kLightText),
                   ),
                 ],
               ),

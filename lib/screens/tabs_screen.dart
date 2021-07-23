@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:podcast_player_app/colors.dart';
+import 'package:podcast_player_app/themes/colors.dart';
 import 'package:podcast_player_app/my_app_icons.dart';
 import 'package:podcast_player_app/screens/discover_podcasts_screen.dart';
 import 'package:podcast_player_app/screens/podcast_detail_screen.dart';

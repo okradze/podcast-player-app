@@ -31,22 +31,24 @@ class _PodcastsScreenState extends State<PodcastsScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
-      physics: ScrollPhysics(),
-      controller: scrollController,
-      child: Padding(
-        padding: const EdgeInsets.all(20.0),
-        child: Column(
-          children: [
-            PodcastList(),
-            Consumer<PodcastsProvider>(
-              builder: (ctx, podcasts, _) => Container(
-                height: 60,
-                width: double.infinity,
-                child: podcasts.isLoading ? Spinner() : null,
+    return SafeArea(
+      child: SingleChildScrollView(
+        physics: ScrollPhysics(),
+        controller: scrollController,
+        child: Padding(
+          padding: const EdgeInsets.all(20.0),
+          child: Column(
+            children: [
+              PodcastList(),
+              Consumer<PodcastsProvider>(
+                builder: (ctx, podcasts, _) => Container(
+                  height: 60,
+                  width: double.infinity,
+                  child: podcasts.isLoading ? Spinner() : null,
+                ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );
