@@ -1,3 +1,4 @@
+import 'dart:collection';
 import 'dart:convert';
 
 import 'package:flutter/widgets.dart';
@@ -5,12 +6,13 @@ import 'package:podcast_player_app/apiClient.dart';
 import 'package:podcast_player_app/models/podcast_preview_model.dart';
 
 class PodcastsProvider with ChangeNotifier {
-  List<PodcastPreviewModel> _items = [];
+  final List<PodcastPreviewModel> _items = [];
   bool _loading = false;
   int _page = 1;
   bool _hasNextPage = true;
 
-  List<PodcastPreviewModel> get items => _items;
+  UnmodifiableListView<PodcastPreviewModel> get items =>
+      UnmodifiableListView(_items);
   bool get isLoading => _loading;
   bool get hasNextPage => _hasNextPage;
   int get page => _page;

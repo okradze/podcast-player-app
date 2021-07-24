@@ -40,11 +40,12 @@ class _PodcastsScreenState extends State<PodcastsScreen> {
           child: Column(
             children: [
               PodcastList(),
-              Consumer<PodcastsProvider>(
-                builder: (ctx, podcasts, _) => Container(
+              Selector<PodcastsProvider, bool>(
+                selector: (_, podcasts) => podcasts.isLoading,
+                builder: (ctx, isLoading, _) => Container(
                   height: 60,
                   width: double.infinity,
-                  child: podcasts.isLoading ? Spinner() : null,
+                  child: isLoading ? Spinner() : null,
                 ),
               ),
             ],
