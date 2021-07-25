@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:podcast_player_app/bloc/discover_podcasts_bloc.dart';
 import 'package:podcast_player_app/widgets/discover_podcasts_lists.dart';
-import 'package:podcast_player_app/widgets/spinner.dart';
+import 'package:podcast_player_app/widgets/search_input.dart';
 
 class DiscoverPodcastsScreen extends StatefulWidget {
   @override
@@ -45,7 +45,22 @@ class _DiscoverPodcastsScreenState extends State<DiscoverPodcastsScreen> {
         controller: scrollController,
         child: Column(
           children: [
-            SizedBox(height: 20),
+            Padding(
+              padding: const EdgeInsets.fromLTRB(20, 40, 20, 0),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    'Discover Podcasts',
+                    style: Theme.of(context).textTheme.headline2,
+                    textAlign: TextAlign.start,
+                  ),
+                  SizedBox(height: 30),
+                  SearchInput(),
+                  SizedBox(height: 50),
+                ],
+              ),
+            ),
             DiscoverPodcastsLists(),
           ],
         ),

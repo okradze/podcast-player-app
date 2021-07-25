@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:podcast_player_app/bloc/podcasts_bloc.dart';
 import 'package:podcast_player_app/widgets/podcast_list.dart';
+import 'package:podcast_player_app/widgets/search_input.dart';
 
 class PodcastsScreen extends StatefulWidget {
   @override
@@ -39,8 +40,21 @@ class _PodcastsScreenState extends State<PodcastsScreen> {
         physics: ScrollPhysics(),
         controller: scrollController,
         child: Padding(
-          padding: const EdgeInsets.all(20.0),
-          child: PodcastList(),
+          padding: const EdgeInsets.fromLTRB(20, 40, 20, 20),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                'Popular Podcasts',
+                style: Theme.of(context).textTheme.headline2,
+                textAlign: TextAlign.start,
+              ),
+              SizedBox(height: 30),
+              SearchInput(),
+              SizedBox(height: 50),
+              PodcastList(),
+            ],
+          ),
         ),
       ),
     );

@@ -3,9 +3,9 @@ import 'package:podcast_player_app/themes/colors.dart';
 
 const DEFAULT_TEXT_THEME = TextTheme(
   headline1:
-      TextStyle(fontSize: 30, fontWeight: FontWeight.w600, color: kTextColor),
+      TextStyle(fontSize: 30, fontWeight: FontWeight.bold, color: kTextColor),
   headline2:
-      TextStyle(fontSize: 26, fontWeight: FontWeight.w600, color: kTextColor),
+      TextStyle(fontSize: 26, fontWeight: FontWeight.bold, color: kTextColor),
   headline3:
       TextStyle(fontSize: 22, fontWeight: FontWeight.w600, color: kTextColor),
   headline4:
