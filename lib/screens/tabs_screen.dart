@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:podcast_player_app/bloc/podcasts_bloc.dart';
 import 'package:podcast_player_app/themes/colors.dart';
 import 'package:podcast_player_app/my_app_icons.dart';
 import 'package:podcast_player_app/screens/discover_podcasts_screen.dart';
@@ -16,7 +18,7 @@ class _TabsScreenState extends State<TabsScreen> {
   final List<Widget> tabs = [
     PodcastsScreen(),
     DiscoverPodcastsScreen(),
-    PodcastDetailScreen(),
+    // PodcastDetailScreen(),
   ];
   final List<String> appBarLabels = [
     'Podcasts',
@@ -45,9 +47,14 @@ class _TabsScreenState extends State<TabsScreen> {
         backgroundColor: kOffsetColor,
         elevation: 0.0,
       ),
-      body: IndexedStack(
-        index: selectedTabIndex,
-        children: tabs,
+      body: MultiBlocProvider(
+        providers: [
+          BlocProvider<PodcastsBloc>(create: (ctx) => PodcastsBloc()),
+        ],
+        child: IndexedStack(
+          index: selectedTabIndex,
+          children: tabs,
+        ),
       ),
       bottomNavigationBar: BottomNavigationBar(
         onTap: selectTab,

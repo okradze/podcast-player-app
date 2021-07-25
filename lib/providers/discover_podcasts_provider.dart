@@ -1,7 +1,7 @@
 import 'dart:convert';
 
 import 'package:flutter/widgets.dart';
-import 'package:podcast_player_app/apiClient.dart';
+import 'package:podcast_player_app/api/listen_notes_api.dart';
 import 'package:podcast_player_app/models/discover_podcasts_model.dart';
 
 class DiscoverPodcastsProvider with ChangeNotifier {
@@ -26,8 +26,7 @@ class DiscoverPodcastsProvider with ChangeNotifier {
 
       setLoading(true);
 
-      final res =
-          await listenNotesApi.get(Uri.parse('/curated_podcasts?page=$_page'));
+      final res = await ListenNotesApi.fetchDiscoverPodcasts(_page);
       setLoading(false);
 
       final Map<String, dynamic> data = jsonDecode(res.body);

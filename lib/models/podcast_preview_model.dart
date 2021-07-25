@@ -1,4 +1,6 @@
-class PodcastPreviewModel {
+import 'package:equatable/equatable.dart';
+
+class PodcastPreviewModel extends Equatable {
   final String id, title, thumbnail, publisher;
 
   PodcastPreviewModel({
@@ -16,4 +18,7 @@ class PodcastPreviewModel {
       thumbnail: json['thumbnail'],
     );
   }
+
+  @override
+  List<Object?> get props => [id, title, thumbnail, publisher];
 }

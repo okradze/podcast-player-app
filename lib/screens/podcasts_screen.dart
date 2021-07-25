@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:podcast_player_app/providers/podcasts_provider.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:podcast_player_app/bloc/podcasts_bloc.dart';
 import 'package:podcast_player_app/widgets/podcast_list.dart';
-import 'package:podcast_player_app/widgets/spinner.dart';
 import 'package:provider/provider.dart';
 
 class PodcastsScreen extends StatefulWidget {
@@ -15,18 +15,22 @@ class _PodcastsScreenState extends State<PodcastsScreen> {
   @override
   void initState() {
     super.initState();
+
     Future.delayed(Duration.zero, () async {
-      final podcasts = Provider.of<PodcastsProvider>(context, listen: false);
-      await podcasts.fetchPodcasts();
+      context.read<PodcastsBloc>().add(FetchPodcastsEvent());
 
       scrollController.addListener(() async {
-        if (scrollController.position.atEdge) {
-          if (scrollController.position.pixels != 0) {
-            await podcasts.fetchPodcasts();
-          }
+        if (isBottom) {
+          context.read<PodcastsBloc>().add(FetchPodcastsEvent());
         }
       });
     });
+  }
+
+  @override
+  void dispose() {
+    scrollController.dispose();
+    super.dispose();
   }
 
   @override
@@ -37,21 +41,20 @@ class _PodcastsScreenState extends State<PodcastsScreen> {
         controller: scrollController,
         child: Padding(
           padding: const EdgeInsets.all(20.0),
-          child: Column(
-            children: [
-              PodcastList(),
-              Selector<PodcastsProvider, bool>(
-                selector: (_, podcasts) => podcasts.isLoading,
-                builder: (ctx, isLoading, _) => Container(
-                  height: 60,
-                  width: double.infinity,
-                  child: isLoading ? Spinner() : null,
-                ),
-              ),
-            ],
-          ),
+          child: PodcastList(),
         ),
       ),
     );
+  }
+
+  bool get isBottom {
+    if (scrollController.position.atEdge) {
+      return scrollController.position.pixels != 0;
+    }
+    return false;
+    // if (!scrollController.hasClients) return false;
+    // final maxScroll = scrollController.position.maxScrollExtent;
+    // final currentScroll = scrollController.offset;
+    // return currentScroll >= (maxScroll * 0.90);
   }
 }
