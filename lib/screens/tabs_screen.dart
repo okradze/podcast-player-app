@@ -26,7 +26,7 @@ class _TabsScreenState extends State<TabsScreen> {
     'Discover New Podcasts',
     'Now Playing'
   ];
-  int selectedTabIndex = 0;
+  int selectedTabIndex = 1;
 
   void selectTab(int index) {
     setState(() {

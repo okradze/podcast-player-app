@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:podcast_player_app/bloc/discover_podcasts_bloc.dart';
 import 'package:podcast_player_app/screens/podcast_detail_screen.dart';
+import 'package:podcast_player_app/themes/colors.dart';
 
 class DiscoverPodcastList extends StatelessWidget {
   @override
@@ -30,7 +31,7 @@ class DiscoverPodcastList extends StatelessWidget {
                   ),
                   SizedBox(height: 20),
                   Container(
-                    height: 150,
+                    height: 130,
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(20.0),
                     ),
@@ -41,7 +42,7 @@ class DiscoverPodcastList extends StatelessWidget {
                       itemCount: list.podcasts.length,
                       itemBuilder: (ctx, index) {
                         final podcast = list.podcasts[index];
-                        return InkWell(
+                        return GestureDetector(
                           onTap: () {
                             Navigator.of(context).pushNamed(
                                 PodcastDetailScreen.routeName,
@@ -51,9 +52,14 @@ class DiscoverPodcastList extends StatelessWidget {
                             margin: const EdgeInsets.symmetric(horizontal: 10),
                             child: ClipRRect(
                               borderRadius: BorderRadius.circular(20.0),
-                              child: Image.network(
-                                podcast.thumbnail,
-                                fit: BoxFit.cover,
+                              child: Container(
+                                width: 130,
+                                height: 130,
+                                color: kOffsetColor,
+                                child: Image.network(
+                                  podcast.thumbnail,
+                                  fit: BoxFit.cover,
+                                ),
                               ),
                             ),
                           ),

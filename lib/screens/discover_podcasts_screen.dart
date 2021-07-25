@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:podcast_player_app/bloc/discover_podcasts_bloc.dart';
 import 'package:podcast_player_app/widgets/discover_podcast_list.dart';
 import 'package:podcast_player_app/widgets/spinner.dart';
-import 'package:provider/provider.dart';
 
 class DiscoverPodcastsScreen extends StatefulWidget {
   @override
@@ -15,10 +15,11 @@ class _DiscoverPodcastsScreenState extends State<DiscoverPodcastsScreen> {
   @override
   void initState() {
     super.initState();
-    Future.delayed(Duration.zero, () async {
+
+    Future.delayed(Duration.zero, () {
       context.read<DiscoverPodcastsBloc>().add(FetchDiscoverPodcastsEvent());
 
-      scrollController.addListener(() async {
+      scrollController.addListener(() {
         if (scrollController.position.atEdge) {
           if (scrollController.position.pixels != 0) {
             context
@@ -28,6 +29,12 @@ class _DiscoverPodcastsScreenState extends State<DiscoverPodcastsScreen> {
         }
       });
     });
+  }
+
+  @override
+  void dispose() {
+    scrollController.dispose();
+    super.dispose();
   }
 
   @override

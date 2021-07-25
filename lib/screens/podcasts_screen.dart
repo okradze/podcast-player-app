@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:podcast_player_app/bloc/podcasts_bloc.dart';
 import 'package:podcast_player_app/widgets/podcast_list.dart';
-import 'package:provider/provider.dart';
 
 class PodcastsScreen extends StatefulWidget {
   @override
@@ -16,10 +15,10 @@ class _PodcastsScreenState extends State<PodcastsScreen> {
   void initState() {
     super.initState();
 
-    Future.delayed(Duration.zero, () async {
+    Future.delayed(Duration.zero, () {
       context.read<PodcastsBloc>().add(FetchPodcastsEvent());
 
-      scrollController.addListener(() async {
+      scrollController.addListener(() {
         if (isBottom) {
           context.read<PodcastsBloc>().add(FetchPodcastsEvent());
         }
