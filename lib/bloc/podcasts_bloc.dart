@@ -10,8 +10,8 @@ part 'podcasts_event.dart';
 part 'podcasts_state.dart';
 
 class PodcastsBloc extends Bloc<PodcastsEvent, PodcastsState> {
-  int page = 1;
   PodcastsBloc() : super(PodcastsState());
+  int page = 1;
 
   @override
   Stream<PodcastsState> mapEventToState(
@@ -23,9 +23,7 @@ class PodcastsBloc extends Bloc<PodcastsEvent, PodcastsState> {
       final res = await ListenNotesApi.fetchPodcasts(page);
 
       if (res.statusCode != 200) {
-        yield state.copyWith(
-          status: PodcastsStatus.failure,
-        );
+        yield state.copyWith(status: PodcastsStatus.failure);
       }
 
       final data = jsonDecode(res.body) as Map<String, dynamic>;

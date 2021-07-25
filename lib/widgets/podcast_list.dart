@@ -9,11 +9,9 @@ class PodcastList extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<PodcastsBloc, PodcastsState>(
       builder: (context, state) {
-        print('--- PodcastList ---');
-
         switch (state.status) {
           case PodcastsStatus.failure:
-            return Center(child: Text('FAILURE'));
+            return Center(child: Text('Something Went Wrong'));
           case PodcastsStatus.success:
             return ListView.builder(
               physics: NeverScrollableScrollPhysics(),

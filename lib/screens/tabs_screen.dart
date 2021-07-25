@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:podcast_player_app/bloc/discover_podcasts_bloc.dart';
 import 'package:podcast_player_app/bloc/podcasts_bloc.dart';
 import 'package:podcast_player_app/themes/colors.dart';
 import 'package:podcast_player_app/my_app_icons.dart';
@@ -50,6 +51,8 @@ class _TabsScreenState extends State<TabsScreen> {
       body: MultiBlocProvider(
         providers: [
           BlocProvider<PodcastsBloc>(create: (ctx) => PodcastsBloc()),
+          BlocProvider<DiscoverPodcastsBloc>(
+              create: (ctx) => DiscoverPodcastsBloc()),
         ],
         child: IndexedStack(
           index: selectedTabIndex,

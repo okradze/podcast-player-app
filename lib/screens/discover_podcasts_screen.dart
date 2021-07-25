@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:podcast_player_app/providers/discover_podcasts_provider.dart';
+import 'package:podcast_player_app/bloc/discover_podcasts_bloc.dart';
 import 'package:podcast_player_app/widgets/discover_podcast_list.dart';
 import 'package:podcast_player_app/widgets/spinner.dart';
 import 'package:provider/provider.dart';
@@ -16,14 +16,14 @@ class _DiscoverPodcastsScreenState extends State<DiscoverPodcastsScreen> {
   void initState() {
     super.initState();
     Future.delayed(Duration.zero, () async {
-      final discoverPodcasts =
-          Provider.of<DiscoverPodcastsProvider>(context, listen: false);
-      await discoverPodcasts.fetchPodcastLists();
+      context.read<DiscoverPodcastsBloc>().add(FetchDiscoverPodcastsEvent());
 
       scrollController.addListener(() async {
         if (scrollController.position.atEdge) {
           if (scrollController.position.pixels != 0) {
-            await discoverPodcasts.fetchPodcastLists();
+            context
+                .read<DiscoverPodcastsBloc>()
+                .add(FetchDiscoverPodcastsEvent());
           }
         }
       });
@@ -40,13 +40,6 @@ class _DiscoverPodcastsScreenState extends State<DiscoverPodcastsScreen> {
           children: [
             SizedBox(height: 20),
             DiscoverPodcastList(),
-            Consumer<DiscoverPodcastsProvider>(
-              builder: (ctx, podcasts, _) => Container(
-                height: 60,
-                width: double.infinity,
-                child: podcasts.isLoading ? Spinner() : null,
-              ),
-            ),
           ],
         ),
       ),
