@@ -52,7 +52,10 @@ class _PodcastsScreenState extends State<PodcastsScreen> {
               SizedBox(height: 30),
               SearchInput(),
               SizedBox(height: 50),
-              PodcastList(),
+              Container(
+                height: 600,
+                child: PodcastList(),
+              ),
             ],
           ),
         ),
