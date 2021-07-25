@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:podcast_player_app/bloc/discover_podcasts_bloc.dart';
-import 'package:podcast_player_app/screens/podcast_detail_screen.dart';
-import 'package:podcast_player_app/themes/colors.dart';
+import 'package:podcast_player_app/widgets/discover_podcast_item.dart';
 
 class DiscoverPodcastsLists extends StatelessWidget {
   @override
@@ -42,27 +41,9 @@ class DiscoverPodcastsLists extends StatelessWidget {
                       itemCount: list.podcasts.length,
                       itemBuilder: (ctx, index) {
                         final podcast = list.podcasts[index];
-                        return GestureDetector(
-                          onTap: () {
-                            Navigator.of(context).pushNamed(
-                                PodcastDetailScreen.routeName,
-                                arguments: podcast);
-                          },
-                          child: Container(
-                            margin: const EdgeInsets.symmetric(horizontal: 10),
-                            child: ClipRRect(
-                              borderRadius: BorderRadius.circular(20.0),
-                              child: Container(
-                                width: 130,
-                                height: 130,
-                                color: kOffsetColor,
-                                child: Image.network(
-                                  podcast.thumbnail,
-                                  fit: BoxFit.cover,
-                                ),
-                              ),
-                            ),
-                          ),
+                        return DiscoverPodcastItem(
+                          key: Key(podcast.id),
+                          podcast: podcast,
                         );
                       },
                     ),
