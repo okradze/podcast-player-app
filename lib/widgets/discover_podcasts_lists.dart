@@ -4,7 +4,7 @@ import 'package:podcast_player_app/bloc/discover_podcasts_bloc.dart';
 import 'package:podcast_player_app/screens/podcast_detail_screen.dart';
 import 'package:podcast_player_app/themes/colors.dart';
 
-class DiscoverPodcastList extends StatelessWidget {
+class DiscoverPodcastsLists extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<DiscoverPodcastsBloc, DiscoverPodcastsState>(

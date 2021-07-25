@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:podcast_player_app/bloc/discover_podcasts_bloc.dart';
-import 'package:podcast_player_app/widgets/discover_podcast_lists.dart';
+import 'package:podcast_player_app/widgets/discover_podcasts_lists.dart';
 import 'package:podcast_player_app/widgets/spinner.dart';
 
 class DiscoverPodcastsScreen extends StatefulWidget {
@@ -46,7 +46,7 @@ class _DiscoverPodcastsScreenState extends State<DiscoverPodcastsScreen> {
         child: Column(
           children: [
             SizedBox(height: 20),
-            DiscoverPodcastList(),
+            DiscoverPodcastsLists(),
           ],
         ),
       ),
