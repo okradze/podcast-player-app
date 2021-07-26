@@ -1,13 +1,23 @@
 import 'package:flutter/material.dart';
 import 'package:podcast_player_app/my_app_icons.dart';
+import 'package:podcast_player_app/screens/search_screen.dart';
 import 'package:podcast_player_app/themes/colors.dart';
 
 class SearchInput extends StatelessWidget {
-  const SearchInput({Key? key}) : super(key: key);
+  final bool openSearchScreenOnTap;
+  const SearchInput({
+    Key? key,
+    this.openSearchScreenOnTap = false,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return TextField(
+      onTap: () {
+        if (openSearchScreenOnTap) {
+          Navigator.of(context).pushNamed(SearchScreen.routeName);
+        }
+      },
       style: TextStyle(
         fontSize: 14,
         fontWeight: FontWeight.w400,

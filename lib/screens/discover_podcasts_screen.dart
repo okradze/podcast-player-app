@@ -39,26 +39,28 @@ class _DiscoverPodcastsScreenState extends State<DiscoverPodcastsScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Padding(
-        padding: const EdgeInsets.fromLTRB(20, 40, 20, 0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            Text(
-              'Discover Podcasts',
-              style: Theme.of(context).textTheme.headline2,
-              textAlign: TextAlign.start,
-            ),
-            SizedBox(height: 30),
-            SearchInput(),
-            SizedBox(height: 50),
-            Container(
-              height: 400,
-              child: DiscoverPodcastsLists(),
-            ),
-          ],
+    return SingleChildScrollView(
+      physics: ScrollPhysics(),
+      controller: scrollController,
+      child: SafeArea(
+        child: Padding(
+          padding: const EdgeInsets.fromLTRB(20, 40, 20, 0),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Text(
+                'Discover Podcasts',
+                style: Theme.of(context).textTheme.headline2,
+                textAlign: TextAlign.start,
+              ),
+              SizedBox(height: 30),
+              SearchInput(openSearchScreenOnTap: true),
+              SizedBox(height: 50),
+              DiscoverPodcastsLists(),
+              SizedBox(height: 50),
+            ],
+          ),
         ),
       ),
     );

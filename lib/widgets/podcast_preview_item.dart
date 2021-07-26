@@ -19,7 +19,6 @@ class PodcastPreviewItem extends StatelessWidget {
       },
       child: Container(
         padding: const EdgeInsets.all(15.0),
-        margin: const EdgeInsets.only(bottom: 20.0),
         decoration: BoxDecoration(
           color: kOffsetColor,
           borderRadius: BorderRadius.circular(15.0),

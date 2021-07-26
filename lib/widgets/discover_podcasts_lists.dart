@@ -13,8 +13,10 @@ class DiscoverPodcastsLists extends StatelessWidget {
           case DiscoverPodcastsStatus.failure:
             return Center(child: Text('Something Went Wrong'));
           case DiscoverPodcastsStatus.success:
-            return ListView.builder(
-              physics: AlwaysScrollableScrollPhysics(),
+            return ListView.separated(
+              physics: NeverScrollableScrollPhysics(),
+              shrinkWrap: true,
+              separatorBuilder: (ctx, _) => SizedBox(height: 50),
               itemBuilder: (ctx, index) {
                 if (index == state.lists.length) return Spinner();
                 final list = state.lists[index];

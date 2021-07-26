@@ -12,41 +12,38 @@ class DiscoverPodcastsList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      margin: const EdgeInsets.only(bottom: 50),
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.start,
-        children: [
-          Container(
-            padding: const EdgeInsets.symmetric(horizontal: 20.0),
-            width: double.infinity,
-            child: Text(
-              list.title,
-              style: Theme.of(context).textTheme.headline5,
-              textAlign: TextAlign.start,
-            ),
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.start,
+      children: [
+        Container(
+          padding: const EdgeInsets.symmetric(horizontal: 20.0),
+          width: double.infinity,
+          child: Text(
+            list.title,
+            style: Theme.of(context).textTheme.headline5,
+            textAlign: TextAlign.start,
           ),
-          SizedBox(height: 20),
-          Container(
-            height: 130,
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(20.0),
-            ),
-            alignment: Alignment.centerLeft,
-            child: ListView(
-              scrollDirection: Axis.horizontal,
-              children: list.podcasts
-                  .map(
-                    (podcast) => DiscoverPodcastItem(
-                      key: Key(podcast.id),
-                      podcast: podcast,
-                    ),
-                  )
-                  .toList(),
-            ),
+        ),
+        SizedBox(height: 20),
+        Container(
+          height: 130,
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(20.0),
           ),
-        ],
-      ),
+          alignment: Alignment.centerLeft,
+          child: ListView(
+            scrollDirection: Axis.horizontal,
+            children: list.podcasts
+                .map(
+                  (podcast) => DiscoverPodcastItem(
+                    key: Key(podcast.id),
+                    podcast: podcast,
+                  ),
+                )
+                .toList(),
+          ),
+        ),
+      ],
     );
   }
 }
