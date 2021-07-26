@@ -14,6 +14,7 @@ class PodcastList extends StatelessWidget {
             return Center(child: Text('Something Went Wrong'));
           case PodcastsStatus.success:
             return ListView.builder(
+              physics: AlwaysScrollableScrollPhysics(),
               itemBuilder: (ctx, index) {
                 if (index == state.podcasts.length) {
                   return Spinner();

@@ -36,28 +36,23 @@ class _PodcastsScreenState extends State<PodcastsScreen> {
   @override
   Widget build(BuildContext context) {
     return SafeArea(
-      child: SingleChildScrollView(
-        physics: ScrollPhysics(),
-        controller: scrollController,
-        child: Padding(
-          padding: const EdgeInsets.fromLTRB(20, 40, 20, 20),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                'Popular Podcasts',
-                style: Theme.of(context).textTheme.headline2,
-                textAlign: TextAlign.start,
-              ),
-              SizedBox(height: 30),
-              SearchInput(),
-              SizedBox(height: 50),
-              Container(
-                height: 600,
-                child: PodcastList(),
-              ),
-            ],
-          ),
+      child: Padding(
+        padding: const EdgeInsets.fromLTRB(20, 40, 20, 0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              'Popular Podcasts',
+              style: Theme.of(context).textTheme.headline2,
+              textAlign: TextAlign.start,
+            ),
+            SizedBox(height: 30),
+            SearchInput(),
+            SizedBox(height: 50),
+            Expanded(
+              child: PodcastList(),
+            ),
+          ],
         ),
       ),
     );

@@ -5,11 +5,11 @@ import 'package:podcast_player_app/themes/colors.dart';
 class PodcastDetailScreen extends StatelessWidget {
   static const routeName = '/podcast-detail';
 
+  final PodcastPreviewModel podcast;
+  PodcastDetailScreen({required this.podcast});
+
   @override
   Widget build(BuildContext context) {
-    final podcast =
-        ModalRoute.of(context)?.settings.arguments as PodcastPreviewModel;
-
     return Scaffold(
       appBar: AppBar(
         backgroundColor: kLightBackgroundColor,

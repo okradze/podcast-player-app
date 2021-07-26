@@ -16,6 +16,7 @@ class SearchInput extends StatelessWidget {
       decoration: InputDecoration(
         fillColor: kOffsetColor,
         filled: true,
+        hoverColor: kOffsetColor,
         prefixIcon: Icon(
           MyAppIcons.search,
           color: Color(0xFFDEDEDE),

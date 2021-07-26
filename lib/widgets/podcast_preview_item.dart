@@ -12,8 +12,10 @@ class PodcastPreviewItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        Navigator.of(context)
-            .pushNamed(PodcastDetailScreen.routeName, arguments: podcast);
+        Navigator.of(context).push(MaterialPageRoute(
+            builder: (ctx) => PodcastDetailScreen(podcast: podcast)));
+        // Navigator.of(context)
+        // .pushNamed(PodcastDetailScreen.routeName, arguments: podcast);
       },
       child: Container(
         padding: const EdgeInsets.all(15.0),

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:podcast_player_app/screens/podcast_detail_screen.dart';
 import 'package:podcast_player_app/themes/colors.dart';
 import 'package:podcast_player_app/screens/tabs_screen.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
@@ -33,7 +32,7 @@ class MyApp extends StatelessWidget {
       ),
       routes: {
         '/': (ctx) => TabsScreen(),
-        PodcastDetailScreen.routeName: (ctx) => PodcastDetailScreen(),
+        // PodcastDetailScreen.routeName: (ctx) => PodcastDetailScreen(),
       },
     );
   }

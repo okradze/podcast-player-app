@@ -33,17 +33,16 @@ class DiscoverPodcastsList extends StatelessWidget {
               borderRadius: BorderRadius.circular(20.0),
             ),
             alignment: Alignment.centerLeft,
-            child: ListView.builder(
-              shrinkWrap: true,
+            child: ListView(
               scrollDirection: Axis.horizontal,
-              itemCount: list.podcasts.length,
-              itemBuilder: (ctx, index) {
-                final podcast = list.podcasts[index];
-                return DiscoverPodcastItem(
-                  key: Key(podcast.id),
-                  podcast: podcast,
-                );
-              },
+              children: list.podcasts
+                  .map(
+                    (podcast) => DiscoverPodcastItem(
+                      key: Key(podcast.id),
+                      podcast: podcast,
+                    ),
+                  )
+                  .toList(),
             ),
           ),
         ],

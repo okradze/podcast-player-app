@@ -5,7 +5,6 @@ import 'package:podcast_player_app/bloc/podcasts_bloc.dart';
 import 'package:podcast_player_app/themes/colors.dart';
 import 'package:podcast_player_app/my_app_icons.dart';
 import 'package:podcast_player_app/screens/discover_podcasts_screen.dart';
-import 'package:podcast_player_app/screens/podcast_detail_screen.dart';
 import 'package:podcast_player_app/screens/podcasts_screen.dart';
 
 class TabsScreen extends StatefulWidget {

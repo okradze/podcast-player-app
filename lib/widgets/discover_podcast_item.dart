@@ -12,8 +12,10 @@ class DiscoverPodcastItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        Navigator.of(context)
-            .pushNamed(PodcastDetailScreen.routeName, arguments: podcast);
+        Future.delayed(Duration.zero, () {
+          Navigator.of(context).push(MaterialPageRoute(
+              builder: (ctx) => PodcastDetailScreen(podcast: podcast)));
+        });
       },
       child: Container(
         margin: const EdgeInsets.symmetric(horizontal: 10),
