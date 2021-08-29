@@ -18,6 +18,7 @@ class SearchInput extends StatelessWidget {
           Navigator.of(context).pushNamed(SearchScreen.routeName);
         }
       },
+      onChanged: (val) {},
       style: TextStyle(
         fontSize: 14,
         fontWeight: FontWeight.w400,
@@ -39,6 +40,12 @@ class SearchInput extends StatelessWidget {
           borderRadius: BorderRadius.circular(30.0),
         ),
         enabledBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(30.0),
+          borderSide: BorderSide(
+            color: kOffsetColor,
+          ),
+        ),
+        disabledBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(30.0),
           borderSide: BorderSide(
             color: kOffsetColor,

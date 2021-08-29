@@ -36,17 +36,6 @@ class _TabsScreenState extends State<TabsScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // appBar: AppBar(
-      //   title: Text(
-      //     appBarLabels[selectedTabIndex],
-      //     style: TextStyle(
-      //       color: kSecondaryColor,
-      //       fontWeight: FontWeight.w600,
-      //     ),
-      //   ),
-      //   backgroundColor: kOffsetColor,
-      //   elevation: 0.0,
-      // ),
       body: MultiBlocProvider(
         providers: [
           BlocProvider<PodcastsBloc>(create: (ctx) => PodcastsBloc()),

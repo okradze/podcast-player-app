@@ -15,4 +15,8 @@ abstract class ListenNotesApi {
   static Future<http.Response> fetchDiscoverPodcasts(int page) {
     return _client.get(Uri.parse('/curated_podcasts?page=$page'));
   }
+
+  static Future<http.Response> searchPodcasts(String searchTerm) {
+    return _client.get(Uri.parse('/typeahead?q=$searchTerm&show_podcasts=1'));
+  }
 }
